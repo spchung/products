@@ -1,13 +1,13 @@
-import sqlite3
-import mysql.connector as mysql
 from shared.db import db
 
 def get_message(id):
     cursor = db.cursor()
     res = cursor.execute('SELECT * FROM messages WHERE id = ?', (id,)).fetchone()
     cursor.close()
-    return dict(res) if not res is None else None
-
+    if res is None:
+        return {}, 404
+    return dict(res), 200
+    
 def save_message(adict):
     message = adict['message']
     cursor = db.cursor()
@@ -15,4 +15,4 @@ def save_message(adict):
     row_id = cursor.lastrowid
     db.commit()
     cursor.close()
-    return row_id
+    return row_id, 200

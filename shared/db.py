@@ -15,6 +15,13 @@ def create_connection(db_file):
 
     return conn
 
+def likeify(s):
+    return '%'+s+'%'
+
+class QueryBuilder:
+    def __init__(self):
+        pass
+
 db = create_connection('db.db')
 db.row_factory = sqlite3.Row
 db.set_trace_callback(print)

@@ -12,11 +12,11 @@ example_model = api.model('example_model', {
 @api.route('/<id>')
 class Example(Resource):
     def get(self, id):
-        return get_message(id), 200
+        return get_message(id)
 
 @api.route('/')
 class Example2(Resource):
     @api.expect(example_model)
     def post(self):
         payload = self.api.payload
-        return save_message(payload), 200 
+        return save_message(payload)
