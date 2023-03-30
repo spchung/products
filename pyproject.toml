@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "products"
+version = "0.1.0"
+description = ""
+authors = ["Stephen Chung <chungstephen96@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "^2.2.3"
+werkzeug = "^2.2.3"
+flask-restx = "^1.1.0"
+mysql-connector-python = "^8.0.32"
+grpcio = "^1.51.3"
+flask-sqlalchemy = "^3.0.3"
+psycopg2 = "^2.9.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
