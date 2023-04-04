@@ -3,7 +3,7 @@ from shared.connection import db
 from .model import MyntraProducts
 
 def get_product(id):
-    row = db.session.query(MyntraProducts).filter(MyntraProducts.ProductId == id).first()
+    row = db.session.query(MyntraProducts).filter(MyntraProducts.product_id == id).first()
     if not row:
         return None, 404
     return row.to_json(), 200

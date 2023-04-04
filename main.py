@@ -1,6 +1,7 @@
 import importlib, os
-from flask import Flask, url_for
+from flask import Flask, url_for, send_from_directory
 from flask_restx import Api
+from flask_cors import CORS
 from shared.connection import db
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ class MyApi(Api):
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
+app.config['WTF_CSRF_ENABLED'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('POSTGRES_CONNECTION_STRING')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -39,6 +41,7 @@ for mod in sorted_moduleMapper:
     swaggerApi.add_namespace(tmp.api, path='/v1/'+module_mapper[mod])
 
 db.init_app(app)
+CORS(app)
 
 if __name__ == '__main__':
-    app.run(host="127.0.0.1", port=8080, debug=True)
+    app.run(host="127.0.0.1", port=8080, debug=False)
