@@ -28,7 +28,8 @@ swaggerApi = MyApi(
 
 module_mapper = {
     'example': 'example',
-    'myntra_product':'myntra_product'
+    'myntra_product':'myntra_product',
+    'chat': 'chat',
 }
 
 sorted_moduleMapper = {}

@@ -17,11 +17,11 @@ query_model = api.model('query_model', {
 @api.route('/<id>')
 class Get(Resource):
     def get(self, id):
-        return get_product(id)
+        return get_product(id), 200
 
 @api.route('/')
 class Query(Resource):
     @api.expect(query_model)
     def post(self):
         payload = request.json
-        return query_products(payload)
+        return query_products(payload), 200

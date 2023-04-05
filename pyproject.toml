@@ -15,6 +15,7 @@ grpcio = "^1.51.3"
 flask-sqlalchemy = "^3.0.3"
 psycopg2 = "^2.9.5"
 flask-cors = "^3.0.10"
+openai = "^0.27.4"
 
 
 [build-system]
