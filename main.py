@@ -16,7 +16,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 app.config['WTF_CSRF_ENABLED'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('POSTGRES_CONNECTION_STRING')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('POSTGRES_CONNECTION_STRING').replace('\n','').strip()
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 swaggerApi = MyApi(
