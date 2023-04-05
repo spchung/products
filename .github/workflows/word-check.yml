@@ -1,7 +1,7 @@
 name: Pylint check for haberdashery
 on:
   push:
-    branches: [master]
+    branches: [no-exisitng]
 jobs:
   pylint:
     runs-on: ubuntu-latest
