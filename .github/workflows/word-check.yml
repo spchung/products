@@ -1,0 +1,12 @@
+name: Pylint check for haberdashery
+on:
+  push:
+    branches: [master]
+jobs:
+  pylint:
+    runs-on: ubuntu-latest
+    steps:
+    - run:   echo ::set-env name=GHA_COUNTER::$(grep -R  --exclude-dir=.github  "haberdashery" . | wc -l )
+      shell: bash
+    - run: echo "There's a haberdashery in my code!"
+      if:  env.GHA_COUNTER == '0'
