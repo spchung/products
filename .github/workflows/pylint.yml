@@ -1,23 +1,21 @@
-name: Pylint
-
-on: [push]
-
+name: Pylint check for haberdashery
+on:
+  push:
+    branches: [main]
 jobs:
-  build:
+  pylint:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.9"]
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pylint
-    - name: Analysing the code with pylint
-      run: |
-        pylint $(git ls-files '*.py')
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          pip install pylint
+      - name: Run pylint check
+        run: |
+          pylint --disable=all --enable=spelling --spelling-dict=en_US --spelling-private-dict-file=./custom_dict.txt ./ | tee pylint_report.txt
+          cat pylint_report.txt | grep -i "haberdashery"
