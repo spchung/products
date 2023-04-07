@@ -16,6 +16,7 @@ flask-sqlalchemy = "^3.0.3"
 psycopg2 = "^2.9.5"
 flask-cors = "^3.0.10"
 openai = "^0.27.4"
+uwsgi = "^2.0.21"
 
 
 [build-system]
